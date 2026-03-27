@@ -1,0 +1,43 @@
+title: "Social Complexity Insights"
+description: "Observations and simulations at the intersection of computational modeling and social dynamics."
+author: "Jiyuan Shi"
+email: shi_jiyuan@outlook.com
+
+baseurl: "/Social-Complexity-Insights"
+url: "https://stevenbush.github.io"
+
+theme: minima
+
+minima:
+  skin: classic
+
+# Navigation links shown in header
+header_pages:
+  - social-observations/README.md
+  - abm-analysis/README.md
+
+# Social links shown in footer
+minima:
+  social_links:
+    - { platform: github, user_url: "https://github.com/stevenbush" }
+    - { platform: email, user_url: "mailto:shi_jiyuan@outlook.com" }
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - "*.sh"
