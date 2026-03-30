@@ -7,6 +7,8 @@ The repository combines two layers:
 - a human-facing writing layer in `content/posts/`
 - a Jekyll publishing layer generated into `_posts/` for GitHub Pages
 
+**Live site (GitHub Pages):** [https://stevenbush.github.io/Social-Complexity-Insights/](https://stevenbush.github.io/Social-Complexity-Insights/)
+
 ## What This Repository Contains
 
 - Long-form blog posts and technical essays
@@ -126,6 +128,20 @@ The site configuration currently uses:
 - site URL: `https://stevenbush.github.io/Social-Complexity-Insights/`
 - base URL: `/Social-Complexity-Insights`
 
+### Before publishing: Gemfile.lock and CI (Linux vs macOS)
+
+GitHub Actions builds on **Linux (`ubuntu-latest`, x86_64)**. If you run `bundle install` or `bundle update` **only on macOS** (especially Apple Silicon), `Gemfile.lock` may record only **`arm64-darwin`** platform entries. In that case CI can fail during `bundle install` (for example Bundler **exit code 16**) because native gems such as `ffi`, `sass-embedded`, and `google-protobuf` have no matching Linux variants in the lockfile.
+
+**Before you push changes to `main` that touch `Gemfile` or `Gemfile.lock`,** run this once in the project (using the same Ruby/Bundler you use locally, for example the repo-local Ruby under `.local/ruby-3.2.4/`):
+
+```bash
+bundle lock --add-platform x86_64-linux
+```
+
+Commit the updated `Gemfile.lock` together with your dependency changes so CI can resolve **both** macOS and Linux gem variants.
+
+**Alternative:** Regenerate or refresh the lockfile inside a **Linux** environment (for example a `ruby:3.2` Docker container) so `x86_64-linux` entries are produced naturally, then commit that lockfile.
+
 ## Important Notes
 
 - `README.md`, `content/`, and `scripts/` are excluded from the published Jekyll site by `_config.yml`.
@@ -140,4 +156,5 @@ The site configuration currently uses:
 2. Run `./scripts/preview.sh`.
 3. Inspect the generated site locally.
 4. Commit source changes when satisfied.
-5. Publish by updating `main` so GitHub Pages rebuilds the site.
+5. If you changed Ruby dependencies, run `bundle lock --add-platform x86_64-linux` and commit the updated `Gemfile.lock` (see [Before publishing: Gemfile.lock and CI](#before-publishing-gemfilelock-and-ci-linux-vs-macos)).
+6. Publish by updating `main` so GitHub Pages rebuilds the site.
