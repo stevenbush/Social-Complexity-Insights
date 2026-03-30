@@ -1,0 +1,11 @@
+.DS_Store
+Prompt_Memory.txt
+.local/
+.bundle/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+_site/
+vendor/bundle/
+_posts/*.md
+!_posts/.gitkeep

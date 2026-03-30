@@ -1,4 +1,4 @@
 ---
 layout: home
-title: "Social Complexity Insights"
+background: "/img/bg-index.jpg"
 ---
