@@ -34,3 +34,4 @@ exclude:
   - Gemfile.lock
   - node_modules
   - blog-social-systems-01-convenience-autonomy-and-hidden-architectures.md
+  - blog-social-systems-02-simulating-society-age-of-ai.md

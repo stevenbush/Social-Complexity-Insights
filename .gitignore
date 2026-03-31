@@ -9,3 +9,6 @@ _site/
 vendor/bundle/
 _posts/*.md
 !_posts/.gitkeep
+
+# Root working copy tracked on local-work-space only; site source is content/posts/
+blog-social-systems-02-simulating-society-age-of-ai.md
