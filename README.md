@@ -66,10 +66,11 @@ The script [`scripts/generate_posts.rb`](scripts/generate_posts.rb) converts the
 
 At the current repository state:
 
-- the active source post lives in `content/posts/`
-- a generated version is produced in `_posts/`
-- a legacy root-level Markdown copy is still present as a local reference artifact:
-  `blog-social-systems-01-convenience-autonomy-and-hidden-architectures.md`
+- active source posts live in `content/posts/` (one file per published article, named `YYYY-MM-DD-slug.md`)
+- a generated version is produced in `_posts/` when you run `scripts/generate_posts.rb` or CI
+- legacy root-level Markdown copies may exist as local reference artifacts alongside `content/posts/`, for example:
+  `blog-social-systems-01-convenience-autonomy-and-hidden-architectures.md` and
+  `blog-social-systems-02-simulating-society-age-of-ai.md`
 
 The source of truth for authoring should be treated as `content/posts/`, not `_posts/`.
 
