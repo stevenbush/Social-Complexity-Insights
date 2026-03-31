@@ -54,11 +54,23 @@ Example:
 Main body text.
 ```
 
+Optional source front matter is also supported when you want to pin a specific header background in the generated Jekyll post:
+
+```md
+---
+background: "/img/posts/03.jpg"
+---
+
+# Example Post Title
+```
+
 The script [`scripts/generate_posts.rb`](scripts/generate_posts.rb) converts these source files into Jekyll posts by:
 
 - extracting the title from the first `#` heading
 - converting the optional italic subtitle into front matter
 - assigning the `post` layout and post date
+- honoring an optional source `background` value when present
+- otherwise assigning each generated post a stable header background from `img/posts/` when available, with `/img/bg-post.jpg` as the fallback
 - rewriting `assets/...` image links into `relative_url` form for GitHub Pages
 - regenerating `_posts/*.md` from scratch on each run
 
