@@ -2,7 +2,7 @@
 
 *Reflections on where agent-based modeling meets large language models — and why the real frontier isn't what you'd expect.*
 
-**Figure 1 — Opening: simulating society in the age of AI**
+**Figure 1 — Where two worlds converge: simulation science meets the generative AI era**
 
 ![Opening hero: agent-based modeling, generative AI, and urban society as a single visual story—scale, interaction, and the hybrid human–machine frontier.](assets/images/blog-social-systems-02-simulating-society-age-of-ai/fig01-opening-hero-simulating-society-age-of-ai.png)
 
@@ -24,7 +24,7 @@ Agent-based modeling (ABM) offers a framework for doing exactly this: you define
 
 But here's what makes this moment different from any that came before. ABM has been around for decades. What's new is a collision of forces — generative AI, massive GPU compute, and differentiable simulation frameworks — that is fundamentally reshaping what these models can do and what they mean. And at the same time, a quieter but more profound shift is underway: AI agents are no longer just tools for *simulating* society. They are becoming *participants* in it.
 
-Consider a thought experiment. A Tuesday afternoon in 2028. A product team at a mid-sized tech company is negotiating next quarter's budget — but nobody is in the same room. Each team lead has spent twenty minutes that morning briefing their personal AI agent: priorities, red lines, acceptable trade-offs. The agents spend three hours negotiating with each other — proposing, counter-proposing, escalating sticking points back to their human principals. By 4 PM, a draft allocation lands in everyone's inbox.
+Consider a thought experiment. *A Tuesday afternoon in 2028. A product team at a mid-sized tech company is negotiating next quarter's budget — but nobody is in the same room. Each team lead has spent twenty minutes that morning briefing their personal AI agent: priorities, red lines, acceptable trade-offs. The agents spend three hours negotiating with each other — proposing, counter-proposing, escalating sticking points back to their human principals. By 4 PM, a draft allocation lands in everyone's inbox.*
 
 **Figure 3 — When humans brief agents: from the meeting room to agent-to-agent negotiation**
 
@@ -50,7 +50,7 @@ When you first survey ABM in the generative AI era, three directions jump out:
 
 These directions are real and well-supported. But after deeper investigation, I've come to believe this "bigger, smarter, prettier" narrative misses the most important part of the story.
 
-The real frontier isn't about making simulations bigger or agents cleverer. It's about making the entire research process *trustworthy*.
+> The real frontier isn't about making simulations bigger or agents cleverer. It's about making the entire research process *trustworthy*.
 
 **Figure 4 — The real axis: trustworthiness across visual, scale, and intelligence**
 
@@ -80,13 +80,13 @@ This is not just a visualization problem. It's an *interaction design* problem.
 
 The ABM community already has capable tools — Mesa's browser-based dashboards, GAMA Platform's spatial visualization, Repast's multi-view inspection. But most current tools are good at showing *what* the simulation produced. Far fewer help you understand *why*, *which mechanisms* drove the outcome, or *how confident* you should be. The most valuable insights come from iteration — a researcher poking at the model mid-run, asking "What if I changed this?" or "Why did that cluster behave that way?"
 
-**Figure 5 — Today’s static outputs versus a provenance-aware, LLM-augmented analysis loop**
+**Figure 5 — From black-box outputs to a live, provenance-aware analysis copilot**
 
 ![Split workflow: overwhelmed researcher with static charts versus copilot-assisted exploration of a live simulation with traceable links from natural-language questions to data and mechanisms.](assets/images/blog-social-systems-02-simulating-society-age-of-ai/fig05-traditional-vs-llm-augmented-abm-workflow.png)
 
 Generative AI opens a genuine research opportunity here — not prettier dashboards, but what I'd call **mechanism-oriented, provenance-aware interactive analysis**. Imagine a simulation copilot that lets you query a running simulation in natural language: "Show me the moment polarization began to accelerate." "What factors correlate with agents who defected from the norm?" "Summarize this run and flag the anomalies." Each answer comes with a provenance trail — where the data came from, what assumptions were made, how sensitive the conclusion is.
 
-For anyone who's worked on observability in distributed computing — tracing requests through microservices, correlating logs across components — this has a familiar shape. The ABM analysis workbench is, in a sense, an observability platform for simulated societies.
+For anyone who's worked on observability in distributed computing — tracing requests through microservices, correlating logs across components — this has a familiar shape. *The ABM analysis workbench is, in a sense, an observability platform for simulated societies.*
 
 And there's a deeper reason this matters: as we incorporate AI-driven agents into simulations, *explainability* becomes critical. If an LLM-powered agent makes a surprising decision, can we explain why? The human-in-the-loop isn't just a usability feature — it's a safeguard for scientific rigor.
 
@@ -116,7 +116,7 @@ The bottleneck is no longer "Can we run a million agents?" It's "Can we calibrat
 
 Building realistic large-scale simulations also requires rich input: demographic distributions, network structures, behavioral patterns. Traditionally a massive bottleneck.
 
-LLMs provide genuine value in the "glue work": extracting constraints from messy documents, mapping schemas across data sources, generating documentation, auditing synthetic population pipelines. What they should *not* yet be trusted to do is generate population characteristics directly — the risk of importing training-data stereotypes into a simulation's foundation is too high. Census-derived synthetic populations via statistical methods remain the defensible core. LLMs are best positioned as pipeline assistants, not replacements.
+LLMs provide genuine value in the "glue work": extracting constraints from messy documents, mapping schemas across data sources, generating documentation, auditing synthetic population pipelines. What they should *not* yet be trusted to do is generate population characteristics directly — the risk of importing training-data stereotypes into a simulation's foundation is too high. Census-derived synthetic populations via statistical methods remain the defensible core. **LLMs are best positioned as pipeline assistants, not replacements.**
 
 **Figure 7 — Data to simulation: LLMs as pipeline glue, statistics as the defensible core**
 
@@ -152,11 +152,11 @@ This framing — agency as a resource to allocate and optimize — resonates str
 
 ### The Validation Wall
 
-The uncomfortable truth: LLM-driven agents can produce behavior that *looks* realistic without being *scientifically valid*.
+**The uncomfortable truth:** LLM-driven agents can produce behavior that *looks* realistic without being *scientifically valid*.
 
-A simulation might generate fluent dialogue, plausible demographic variation, and convincing narratives — and still fail because its causal mechanisms are wrong, subgroup behavior is distorted by training-data bias, or apparent emergence is actually memorized pre-training patterns. This is the deepest reason validation has become the field's central problem.
+A simulation might generate fluent dialogue, plausible demographic variation, and convincing narratives — and still fail because its causal mechanisms are wrong, subgroup behavior is distorted by training-data bias, or apparent emergence is actually memorized pre-training patterns. **This is the deepest reason validation has become the field's central problem.**
 
-**Hallucination:** a fabricated agent memory can propagate through the network and distort emergent outcomes. Grounding strategies become methodological necessities.
+**Hallucination:** a fabricated agent memory can propagate through the network and distort emergent outcomes. **Grounding strategies become methodological necessities.**
 
 **Representation gap:** LLMs capture majority viewpoints; computational social science needs specific subpopulations. An LLM might generate a convincing response for a "65-year-old farmer in rural Indonesia," but how faithful is it? Domain-specific fine-tuning or specialized foundation models may be needed.
 
@@ -195,7 +195,7 @@ For computational social science, the unit of analysis shifts. We need to model 
 
 This is a *systems* problem at the deepest level — not how smart one agent is, but what emergent institutional behavior arises when entire organizations and markets are AI-mediated.
 
-And a civilizational question: if we outsource negotiation, argument, and compromise to machines, what happens to our social skills, our empathy, our ability to navigate conflict?
+> And a civilizational question: *if we outsource negotiation, argument, and compromise to machines, what happens to our social skills, our empathy, our ability to navigate conflict?*
 
 **Figure 10 — New unit of analysis: principals, delegates, platforms, oversight**
 
@@ -207,7 +207,7 @@ And a civilizational question: if we outsource negotiation, argument, and compro
 
 Stepping back through a systems engineering lens, these four themes aren't independent directions — they're layers of a single research stack.
 
-**Figure 11 — One stack: foundation, interaction, validation, application, frontier**
+**Figure 11 — The unified research stack: from scalable simulation backbone to hybrid society frontier**
 
 ![Layered architecture from validation-first scalable ABM through LLM-assisted exploration, benchmarks, institutional testbeds, and long-run information design—with trust and accountability as a vertical pillar.](assets/images/blog-social-systems-02-simulating-society-age-of-ai/fig11-layered-research-stack-trust-pillar.png)
 
@@ -237,7 +237,7 @@ What excites me most is the *convergence*. For the first time, we have language 
 
 If there's one thesis I'd want readers to take away: **the most impactful contributions won't come from building the biggest simulation or the smartest agent. They'll come from building the most trustworthy research stack** — transparent in its assumptions, rigorous in its validation, honest about its limitations, and designed to keep humans meaningfully in the loop.
 
-And if society increasingly involves AI agents as mediators and participants in human institutions, building that stack isn't just academic. It's a prerequisite for understanding the world we're building.
+And if society increasingly involves AI agents as mediators and participants in human institutions, building that stack isn't just academic. **It's a prerequisite for understanding the world we're building.**
 
 That's a question worth spending a career on.
 
