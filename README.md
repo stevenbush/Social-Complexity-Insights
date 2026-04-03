@@ -80,7 +80,7 @@ At the current repository state:
 
 - active source posts live in `content/posts/` (one file per published article, named `YYYY-MM-DD-slug.md`)
 - a generated version is produced in `_posts/` when you run `scripts/generate_posts.rb` or CI
-- optional root-level Markdown working copies may exist for private drafting; on the public `main` branch they are omitted from version control when they duplicate `content/posts/`. The branch `local-work-space` may still track those drafts (for example `blog-social-systems-02-simulating-society-age-of-ai.md`).
+- optional root-level Markdown working copies may exist for private drafting; on the public `main` branch they are omitted from version control when they duplicate `content/posts/`. The branch `local-work-space` may still track those drafts (for example `blog-social-systems-02-...md` or `blog-social-systems-03-...md`).
 
 The source of truth for authoring should be treated as `content/posts/`, not `_posts/`.
 

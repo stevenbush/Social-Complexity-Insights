@@ -70,8 +70,12 @@ def extract_optional_subtitle(lines)
 end
 
 def rewrite_asset_paths(body)
-  body.gsub(/\((assets\/[^)]+)\)/) do
+  rewritten = body.gsub(/\((assets\/[^)]+)\)/) do
     "({{ '/#{$1}' | relative_url }})"
+  end
+
+  rewritten.gsub(/(<img\b[^>]*\bsrc=)(["'])(assets\/[^"']+)\2/i) do
+    %(#{$1}#{$2}{{ '/#{$3}' | relative_url }}#{$2})
   end
 end
 
