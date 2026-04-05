@@ -70,7 +70,8 @@ The script [`scripts/generate_posts.rb`](scripts/generate_posts.rb) converts the
 - converting the optional italic subtitle into front matter
 - assigning the `post` layout and post date
 - honoring an optional source `background` value when present
-- otherwise assigning each generated post a stable header background from `img/posts/` when available, with `/img/bg-post.jpg` as the fallback
+- otherwise assigning each generated post a deterministic header background from the current `img/posts/` pool when available, with `/img/bg-post.jpg` as the fallback
+- background assignments are recalculated from the currently available files in `img/posts/`, so adding or removing background images can change the generated result
 - rewriting `assets/...` image links into `relative_url` form for GitHub Pages
 - regenerating `_posts/*.md` from scratch on each run
 
