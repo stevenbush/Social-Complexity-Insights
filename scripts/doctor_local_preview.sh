@@ -43,6 +43,23 @@ else
   check_warn "Bundler install path is missing at $BUNDLE_DIR"
 fi
 
+if [[ -d "$BUNDLE_DIR" ]]; then
+  GEM_HOME="$("$LOCAL_RUBY_DIR/bin/ruby" -e 'print Gem.default_dir')"
+  export PATH="$LOCAL_RUBY_DIR/bin:$PATH"
+  export GEM_HOME
+  export GEM_PATH="$GEM_HOME"
+  export BUNDLE_PATH="$ROOT_DIR/vendor/bundle"
+  export BUNDLE_APP_CONFIG="$ROOT_DIR/.bundle"
+  export BUNDLE_GEMFILE="$ROOT_DIR/Gemfile"
+  # Do not use `bundle exec ruby` here: Bundler sets RUBYOPT with an absolute -r path,
+  # which breaks when the repository path contains spaces (Ruby splits RUBYOPT on spaces).
+  if (cd "$ROOT_DIR" && "$LOCAL_RUBY_DIR/bin/ruby" -rbundler/setup -e "require 'bigdecimal'") >/dev/null 2>&1; then
+    check_ok "Native gem load check (bigdecimal; catches mixed Ruby/Conda installs)"
+  else
+    check_fail "Native extensions do not load with the project Ruby (often caused by bundle install under Conda). Run: rm -rf vendor/bundle && ./scripts/bootstrap_local_preview.sh"
+  fi
+fi
+
 if [[ -f "$ROOT_DIR/img/bg-index.jpg" && -f "$ROOT_DIR/img/bg-post.jpg" ]]; then
   check_ok "Required Clean Blog background images are present"
 else

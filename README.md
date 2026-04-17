@@ -113,6 +113,10 @@ Check the local preview environment:
 ./scripts/doctor_local_preview.sh
 ```
 
+If the repository path contains **spaces** (for example `.../Modeling Social Systems/...`), bootstrap creates a symlink under `/tmp/` so Ruby can be built with a short prefix. If local `ruby` fails to start with `dyld` and a missing `libruby` under `/tmp/...`, run `./scripts/bootstrap_local_preview.sh` again to recreate that symlink. Prefer `./scripts/preview.sh` for local builds; ad-hoc `bundle exec ruby ...` from a path with spaces can fail because Ruby splits `RUBYOPT` on spaces, while `bundle exec jekyll` (used by the preview script) is fine.
+
+If you use a **Conda environment that includes Ruby**, run bootstrap and preview **outside** that environment when possible. The bootstrap script clears common linker variables so `bundle install` links native gems to the project Ruby; if you previously installed gems under Conda, remove `vendor/bundle/` and rerun `./scripts/bootstrap_local_preview.sh`.
+
 ## Local Runtime Details
 
 The preview setup uses repository-local runtime artifacts:

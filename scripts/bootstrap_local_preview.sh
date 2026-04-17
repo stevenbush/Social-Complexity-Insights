@@ -17,6 +17,16 @@ fail() {
   exit 1
 }
 
+# Conda (and similar) often export LDFLAGS/CPPFLAGS pointing at another Ruby.
+# ruby-build and gem native extensions then record that lib as @rpath, and
+# Jekyll fails at runtime with the project-local Ruby.
+sanitize_build_environment() {
+  if [[ -n "${CONDA_PREFIX:-}" || -n "${MAMBA_ROOT_PREFIX:-}" ]]; then
+    printf 'Note: A conda/mamba-style environment is active. Clearing linker-related variables for this script so gems link to the project Ruby under %s.\n' "$LOCAL_RUBY_DIR" >&2
+  fi
+  unset LDFLAGS CPPFLAGS CXXFLAGS CFLAGS PKG_CONFIG_PATH DYLD_LIBRARY_PATH DYLD_FALLBACK_LIBRARY_PATH RUBYOPT || true
+}
+
 ensure_brew() {
   if ! command -v brew >/dev/null 2>&1; then
     fail "Homebrew is required on macOS to bootstrap the project-local Ruby runtime."
@@ -108,6 +118,7 @@ install_gems() {
 }
 
 main() {
+  sanitize_build_environment
   ensure_brew
   prepare_install_alias
   ensure_formulae
