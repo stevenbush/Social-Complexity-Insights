@@ -69,13 +69,26 @@ def extract_optional_subtitle(lines)
   [subtitle, working]
 end
 
+def asset_cache_query(relative_path)
+  full = File.join(ROOT_DIR, relative_path)
+  return "" unless File.file?(full)
+
+  "?cb=#{File.mtime(full).to_i}"
+rescue SystemCallError
+  ""
+end
+
 def rewrite_asset_paths(body)
   rewritten = body.gsub(/\((assets\/[^)]+)\)/) do
-    "({{ '/#{$1}' | relative_url }})"
+    path = Regexp.last_match(1)
+    qs = asset_cache_query(path)
+    "({{ '/#{path}' | relative_url }}#{qs})"
   end
 
   rewritten.gsub(/(<img\b[^>]*\bsrc=)(["'])(assets\/[^"']+)\2/i) do
-    %(#{$1}#{$2}{{ '/#{$3}' | relative_url }}#{$2})
+    path = Regexp.last_match(3)
+    qs = asset_cache_query(path)
+    %(#{Regexp.last_match(1)}#{Regexp.last_match(2)}{{ '/#{path}' | relative_url }}#{qs}#{Regexp.last_match(2)})
   end
 end
 
