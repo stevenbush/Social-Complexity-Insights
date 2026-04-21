@@ -204,8 +204,6 @@ The vertical spine crossing all six: **Observability & Provenance.** Every event
   <figcaption>Figure 5 — Six horizontal layers, one vertical observability spine.</figcaption>
 </figure>
 
-Borrowing a framing that deserves wider circulation: the physical substrate is a deterministic *L1* with microsecond dynamics; the cognitive hub is a *L2* operating on seconds-to-minutes; and, where needed, a *L3* macro-optimisation layer runs slower still over the aggregate population. L1 / L2 / L3 do not share a clock and do not need to. What they share is a bus, a contract, and an agreement that intents flow up and states flow down.
-
 <a id="41-simulation-mechanics"></a>
 ### 4.1 Simulation Mechanics and the Temporal Decoupling Insight
 
